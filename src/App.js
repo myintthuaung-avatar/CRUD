@@ -1,5 +1,6 @@
 import  { useState } from 'react';
 //import { Provider } from 'react-redux';
+import Appbar from './Components/Appbar.jsx'
 import UserTable from './UserTable.jsx';
 import UserForm from './Components/UserForm.jsx';
 //import store from './store';
@@ -15,7 +16,8 @@ function App() {
 
   return (
     <div style={{ padding: 20 }}>
-      <h2>User List App</h2>
+      <Appbar/>
+      <h2>User List</h2>
       <UserForm setUsers={setUsers} />
       <UserTable users={users} setUsers={setUsers} />
     </div>
