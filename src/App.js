@@ -1,18 +1,27 @@
-//import React from 'react';
+import  { useState } from 'react';
 //import { Provider } from 'react-redux';
 import UserTable from './UserTable.jsx';
+import UserForm from './Components/UserForm.jsx';
 //import store from './store';
 //import logo from './logo.svg';
 //import './App.css';
 
+
 function App() {
+  const [users, setUsers] = useState([
+    { id: 1, name: 'Thein Zaw', age: 25 },
+    { id: 2, name: 'Myint Thu Aung', age: 30 },
+  ]);
+
   return (
     <div style={{ padding: 20 }}>
-      <h2>User Data Table</h2>
-      <UserTable />
+      <h2>User List App</h2>
+      <UserForm setUsers={setUsers} />
+      <UserTable users={users} setUsers={setUsers} />
     </div>
   );
 }
+
 // function App() {
 //   return (
 //     <Provider store={store}>
