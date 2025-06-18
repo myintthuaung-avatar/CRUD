@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
-
+import UserForm from './Components/UserForm.jsx';
 export default function UserTable({ users, setUsers }) {
   const handleDelete = (id) => {
     setUsers(users.filter((user) => user.id !== id));
@@ -25,6 +25,7 @@ export default function UserTable({ users, setUsers }) {
 
   return (
     <div style={{ height: 400, width: '100%' }}>
+         <UserForm  setUsers={setUsers}/>
       <DataGrid rows={users} columns={columns} pageSize={5} />
     </div>
   );

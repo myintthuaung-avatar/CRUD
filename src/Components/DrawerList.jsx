@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -14,17 +15,31 @@ import MailIcon from '@mui/icons-material/Mail';
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
 
+  const handleItemClick = (text) => {
+    setOpen(false); // close drawer
+    if (text === 'ငါရွေးမယ်') {
+      navigate('/spinwheel');
+    }
+    else if(text === 'InCome'){
+        navigate('/home');
+    }
+    else if(text === 'List'){
+      navigate('/List');
+    }
+  };
+
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: 250 }} role="presentation">
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['ငါရွေးမယ်','List', 'OutCome', 'Gift', 'Salary'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => handleItemClick(text)}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
@@ -35,7 +50,7 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['Transaction History', 'Net Balance', 'Debit'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -51,16 +66,15 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-        <IconButton
-                    size="small"
-                    edge="start"
-                    color="inherit"
-                    aria-label="open drawer"
-                    sx={{ mr: 2 }}>
-                    <MenuIcon  onClick={toggleDrawer(true)}/>
-                    
-                  </IconButton>
-      {/* <Button onClick={toggleDrawer(true)}>Open</Button> */}
+      <IconButton
+        size="small"
+        edge="start"
+        color="inherit"
+        aria-label="open drawer"
+        sx={{ mr: 2 }}
+      >
+        <MenuIcon onClick={toggleDrawer(true)} />
+      </IconButton>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>

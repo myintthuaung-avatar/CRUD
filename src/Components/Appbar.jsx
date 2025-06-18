@@ -120,7 +120,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+        <IconButton size="large" aria-label="show 4 new mails" color="grey">
           <Badge badgeContent={4} color="error">
             <MailIcon />
           </Badge>
@@ -156,7 +156,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static"  style={{ backgroundColor: 'rgb(53 141 100)' }}>
         <Toolbar>
           <IconButton
             size="small"
@@ -172,9 +172,8 @@ export default function PrimarySearchAppBar() {
             variant="h6"
             
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
+            sx={{ display: { xs: 'none', sm: 'block' } }}>
+            Personal Finance Tracker
           </Typography>
           <Search>
             <SearchIconWrapper>
