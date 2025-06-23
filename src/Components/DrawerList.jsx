@@ -24,13 +24,16 @@ export default function TemporaryDrawer() {
   const handleItemClick = (text) => {
     setOpen(false); // close drawer
     if (text === 'ငါရွေးမယ်') {
-      navigate('/spinwheel');
+      navigate('/');
     }
     else if(text === 'InCome'){
         navigate('/home');
     }
     else if(text === 'List'){
       navigate('/List');
+    }
+    else if(text === 'OutCome'){
+      navigate('/Outcome');
     }
   };
 
